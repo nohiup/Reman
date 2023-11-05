@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -12,24 +10,52 @@
         android:id="@+id/user_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-    
+        android:text="Hello World!"
+        android:layout_centerInParent="true" />
+
     <Button
         android:text="@string/logout"
         android:id="@+id/logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_details"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Add user to Firestore database"
         android:id="@+id/addUserBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logout"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Get user info from Firestore database"
         android:id="@+id/getUserBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addUserBtn"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/bottomFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_above="@id/bottom_bar"
+        android:layout_height="0dp" />
+
+    <nl.joery.animatedbottombar.AnimatedBottomBar
+        android:id="@+id/bottom_bar"
+        android:background="@color/lavender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:abb_selectedTabType="text"
+        app:abb_indicatorAppearance="round"
+        app:abb_indicatorMargin="16dp"
+        app:abb_indicatorHeight="4dp"
+        app:abb_tabs="@menu/bottom_nav_menu"
+        app:abb_selectedIndex="1"
+        android:layout_alignParentBottom="true"
+        app:abb_tabColor="@color/white"
+        app:abb_tabColorSelected="@color/purple_500"/>
+
+</RelativeLayout>

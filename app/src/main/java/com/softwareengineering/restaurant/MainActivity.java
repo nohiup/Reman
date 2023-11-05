@@ -2,7 +2,10 @@ package com.softwareengineering.restaurant;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,28 +32,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import nl.joery.animatedbottombar.AnimatedBottomBar;
+
 public class MainActivity extends AppCompatActivity {
 
+    TextView mainMsg;
     FirebaseAuth auth;
     Button buttonLogout;
-    TextView textView;
     FirebaseUser user;
     FirebaseFirestore db;
     Button addUser;
     Button getUser;
+    AnimatedBottomBar bottomBar;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mainMsg = findViewById(R.id.user_details);
         auth = FirebaseAuth.getInstance();
         buttonLogout = findViewById(R.id.logout);
-        textView = findViewById(R.id.user_details);
         user = auth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
         addUser = findViewById(R.id.addUserBtn);
         getUser = findViewById(R.id.getUserBtn);
+        bottomBar = findViewById(R.id.bottom_bar);
 
         if(user == null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -58,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         else{
-            textView.setText(user.getEmail());
+            mainMsg.setText("Hello " + user.getDisplayName());
         }
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
@@ -133,4 +141,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    // Handle Fragment for Bottom Navigation Bar
+    private void replace(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.bottomFrameLayout, fragment);
+        fragmentTransaction.commit();
+    }
+
+
 }

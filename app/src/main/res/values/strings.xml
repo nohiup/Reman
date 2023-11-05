@@ -12,4 +12,9 @@
     <string name="reset_password">Reset Password</string>
     <string name="back">Back</string>
     <string name="login_as_administrator">Login as Administrator</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
 </resources>
