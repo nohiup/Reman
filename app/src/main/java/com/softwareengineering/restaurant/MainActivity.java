@@ -1,12 +1,15 @@
 package com.softwareengineering.restaurant;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,17 +35,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView mainMsg;
-    FirebaseAuth auth;
-    Button buttonLogout;
-    FirebaseUser user;
-    FirebaseFirestore db;
-    Button addUser;
-    Button getUser;
+
     AnimatedBottomBar bottomBar;
 
     @SuppressLint("SetTextI18n")
@@ -51,92 +50,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainMsg = findViewById(R.id.user_details);
-        auth = FirebaseAuth.getInstance();
-        buttonLogout = findViewById(R.id.logout);
-        user = auth.getCurrentUser();
-        db = FirebaseFirestore.getInstance();
-        addUser = findViewById(R.id.addUserBtn);
-        getUser = findViewById(R.id.getUserBtn);
         bottomBar = findViewById(R.id.bottom_bar);
 
-        if(user == null){
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
-            finish();
-        }
-        else{
-            mainMsg.setText("Hello " + user.getDisplayName());
-        }
+        // Set default Fragment
+        replace(new HomeFragment());
 
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
+        bottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
             @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        addUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (user != null) {
-                    // Create a new user with a name and role
-                    String userName = "hieu"; // Replace with the user's name
-                    String userRole = "admin"; // Replace with the user's role
-                    String userEmail = user.getEmail(); // Replace with the user's email
-
-                    Map<String, Object> userData = new HashMap<>();
-                    userData.put("name", userName);
-                    userData.put("email", userEmail);
-                    userData.put("role", userRole);
-
-                    db.collection("users")
-                            .add(userData)
-                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(MainActivity.this, "Successfully added user to database", Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(MainActivity.this, "Failed to add user to database", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+            public void onTabSelected(int i, @Nullable AnimatedBottomBar.Tab tab, int i1, @NonNull AnimatedBottomBar.Tab tab1) {
+                if(tab1.getId() == R.id.home) {
+                    replace(new HomeFragment());
+                    bottomBar.setBackgroundColor(Color.parseColor("#8692F7"));
+                }
+                else if (tab1.getId() == R.id.profile) {
+                    replace(new ProfileFragment());
+                    bottomBar.setBackgroundColor(Color.parseColor("#8692F7"));
+                }
+                else if (tab1.getId() == R.id.settings) {
+                    replace(new SettingsFragment());
+                    bottomBar.setBackgroundColor(Color.parseColor("#8692F7"));
                 }
             }
-        });
 
-        getUser.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(user != null) {
-                    String targetedRole = "admin";
+            public void onTabReselected(int i, @NonNull AnimatedBottomBar.Tab tab) {
 
-                    db.collection("users")
-                            .whereEqualTo("role", targetedRole)
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        for (QueryDocumentSnapshot document : task.getResult()) {
-                                            String userName = document.getString("name");
-                                            String userEmail = document.getString("email");
-                                            String userRole = document.getString("role");
-                                            Toast.makeText(MainActivity.this, "Successfully get user's info", Toast.LENGTH_SHORT).show();
-                                            Toast.makeText(MainActivity.this, "Admin's info: " + "Name: " + userName + ", Email: " + userEmail + ", Role: " + userRole, Toast.LENGTH_SHORT).show();
-                                        }
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Failed to get user's info", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                }
             }
         });
 
@@ -144,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
     // Handle Fragment for Bottom Navigation Bar
     private void replace(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentManager fragmentManager =getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.bottomFrameLayout, fragment);
         fragmentTransaction.commit();
     }
-
 
 }

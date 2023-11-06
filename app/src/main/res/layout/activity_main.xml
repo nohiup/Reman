@@ -6,49 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/user_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_centerInParent="true" />
-
-    <Button
-        android:text="@string/logout"
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_details"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Add user to Firestore database"
-        android:id="@+id/addUserBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logout"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Get user info from Firestore database"
-        android:id="@+id/getUserBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addUserBtn"
-        android:layout_centerHorizontal="true" />
-
     <FrameLayout
         android:id="@+id/bottomFrameLayout"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_above="@id/bottom_bar"
-        android:layout_height="0dp" />
+        android:layout_height="match_parent" />
 
     <nl.joery.animatedbottombar.AnimatedBottomBar
         android:id="@+id/bottom_bar"
         android:background="@color/lavender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:abb_selectedTabType="text"
+        app:abb_selectedTabType="icon"
         app:abb_indicatorAppearance="round"
         app:abb_indicatorMargin="16dp"
         app:abb_indicatorHeight="4dp"
@@ -56,6 +26,8 @@
         app:abb_selectedIndex="1"
         android:layout_alignParentBottom="true"
         app:abb_tabColor="@color/white"
-        app:abb_tabColorSelected="@color/purple_500"/>
+        app:abb_tabColorSelected="@color/purple_500"
+        app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
+        app:abb_animationDuration="600" />
 
 </RelativeLayout>

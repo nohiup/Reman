@@ -32,11 +32,14 @@ public class Register extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            if(currentUser.isEmailVerified()){
+        if(currentUser != null) {
+            if(currentUser.isEmailVerified()) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
+            }
+            else {
+                Toast.makeText(Register.this, "Your email has not been verified yet", Toast.LENGTH_SHORT).show();
             }
         }
     }
