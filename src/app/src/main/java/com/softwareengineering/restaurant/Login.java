@@ -26,7 +26,6 @@ public class Login extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
     FirebaseAuth mAuth;
-    ProgressBar progressBar;
     TextView textView;
     TextView txtForgotPassword;
 
@@ -55,7 +54,6 @@ public class Login extends AppCompatActivity {
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
-        progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.registerNow);
         txtForgotPassword = findViewById(R.id.txtForgotPassword);
 
@@ -65,7 +63,6 @@ public class Login extends AppCompatActivity {
                 String email, password;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
-                progressBar.setVisibility(View.VISIBLE);
 
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(Login.this, "Enter email", Toast.LENGTH_SHORT).show();
@@ -81,7 +78,6 @@ public class Login extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     FirebaseUser currentUser = mAuth.getCurrentUser();
                                     if(currentUser != null){

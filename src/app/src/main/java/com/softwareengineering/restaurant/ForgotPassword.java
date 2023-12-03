@@ -21,7 +21,6 @@ public class ForgotPassword extends AppCompatActivity {
 
     Button btnReset, btnBack;
     TextInputEditText editTextEmail;
-    ProgressBar progressBar;
     FirebaseAuth mAuth;
     String strEmail;
 
@@ -33,7 +32,6 @@ public class ForgotPassword extends AppCompatActivity {
         btnReset = findViewById(R.id.btn_reset);
         btnBack = findViewById(R.id.btn_forgot_password_back);
         editTextEmail = findViewById(R.id.editForgotPasswordEmail);
-        progressBar = findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
 
         btnReset.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +60,6 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
     private void ResetPassword() {
-        progressBar.setVisibility(View.VISIBLE);
         btnReset.setVisibility(View.INVISIBLE);
 
         mAuth.sendPasswordResetEmail(strEmail)
@@ -78,7 +75,6 @@ public class ForgotPassword extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(ForgotPassword.this, "Error: -" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
                         btnReset.setVisibility(View.VISIBLE);
                     }
                 });
