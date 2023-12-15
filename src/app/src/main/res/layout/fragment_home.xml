@@ -7,34 +7,9 @@
     tools:context=".HomeFragment">
 
     <TextView
-        android:id="@+id/user_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:layout_centerInParent="true" />
-
-    <Button
-        android:text="@string/logout"
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_details"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Add user to Firestore database"
-        android:id="@+id/addUserBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logout"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Get user info from Firestore database"
-        android:id="@+id/getUserBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addUserBtn"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

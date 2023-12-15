@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lobster"
-        android:text="My Restaurant App"
+        android:text="Restaurant Management"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="33sp"
@@ -29,13 +29,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".4" />
+        app:layout_constraintVertical_bias=".5" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Explore your dream food world"
+        android:text="FreeSprite"
         android:textAllCaps="true"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
@@ -43,36 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/Reg_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="14dp"
-        android:text="@string/register"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias=".7"
-        app:layout_constraintWidth_percent=".8"
-        android:background="@drawable/btn_bg_design" />
-
-    <TextView
-        android:id="@+id/Log_txt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:textColor="#FBFBFB"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Reg_button"
-        android:textAlignment="center"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

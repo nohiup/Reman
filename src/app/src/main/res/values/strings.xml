@@ -30,4 +30,8 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="by_creating_account_you_are_accepting">By creating account, you are accepting <u><![CDATA[terms & conditions]]></u></string>
     <string name="terms_amp_conditions"><u><![CDATA[terms & conditions]]></u></string>
+    <!-- Facebook Authentication -->
+    <string name="facebook_app_id">333416469474965</string>
+    <string name="fb_login_protocol_scheme">fb333416469474965</string>
+    <string name="facebook_client_token">8a02350a1d3fdbf1bc12520e1bd5cabb</string>
 </resources>
