@@ -9,19 +9,24 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
@@ -30,6 +35,8 @@ public class Register extends AppCompatActivity {
     Button buttonReg;
     FirebaseAuth mAuth;
     TextView textViewSignIn;
+    FirebaseFirestore db;
+    CheckBox checkBoxTOS;
 
     @Override
     public void onStart() {
@@ -55,7 +62,9 @@ public class Register extends AppCompatActivity {
         editTextRetypePassword = findViewById(R.id.retypePassword);
         buttonReg = findViewById(R.id.btn_register);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         textViewSignIn = findViewById(R.id.loginNow);
+        checkBoxTOS = findViewById(R.id.TOS);
 
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +119,11 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
+                if (!checkBoxTOS.isChecked()) {
+                    Toast.makeText(Register.this, "You must accept our Terms & Conditions in order to proceed", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -119,6 +133,7 @@ public class Register extends AppCompatActivity {
                                     if (currentUser != null){
                                         currentUser.sendEmailVerification();
                                         Toast.makeText(Register.this, "Confirmation link has been sent to your registered email", Toast.LENGTH_SHORT).show();
+                                        addUserToDatabase(currentUser.getUid(), name, email, gender, phone);
                                         Intent intent = new Intent(getApplicationContext(), Login.class);
                                         startActivity(intent);
                                         finish();
@@ -140,5 +155,26 @@ public class Register extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void addUserToDatabase(String uid, String name, String email, String gender, String phone) {
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("email", email);
+        userData.put("gender", gender);
+        userData.put("name", name);
+        userData.put("phone", phone);
+        db.collection("users").document(uid).set(userData)
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("Firestore", "DocumentSnapshot written with ID: " + uid);
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w("Firestore", "Error adding document", e);
+                }
+            });
     }
 }

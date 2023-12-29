@@ -38,6 +38,7 @@
         android:id="@+id/name"
         android:inputType="textPersonName"
         android:background="@drawable/round_corner_box_bg_design"
+        android:paddingHorizontal="10dp"
         android:layout_marginBottom="5dp"
         android:importantForAutofill="no"
         android:layout_width="310dp"
@@ -58,6 +59,7 @@
         android:background="@drawable/round_corner_box_bg_design"
         android:layout_marginBottom="5dp"
         android:importantForAutofill="no"
+        android:paddingHorizontal="10dp"
         android:layout_width="310dp"
         android:layout_height="35dp" />
 
@@ -76,6 +78,7 @@
         android:background="@drawable/round_corner_box_bg_design"
         android:layout_marginBottom="5dp"
         android:importantForAutofill="no"
+        android:paddingHorizontal="10dp"
         android:layout_width="310dp"
         android:layout_height="35dp" />
 
@@ -126,6 +129,7 @@
         android:inputType="textPassword"
         android:background="@drawable/round_corner_box_bg_design"
         android:layout_marginBottom="5dp"
+        android:paddingHorizontal="10dp"
         android:importantForAutofill="no"
         android:layout_width="310dp"
         android:layout_height="35dp" />
@@ -145,10 +149,12 @@
         android:background="@drawable/round_corner_box_bg_design"
         android:layout_marginBottom="5dp"
         android:importantForAutofill="no"
+        android:paddingHorizontal="10dp"
         android:layout_width="310dp"
         android:layout_height="35dp" />
 
     <CheckBox
+        android:id="@+id/TOS"
         android:text="@string/by_creating_account_you_are_accepting"
         android:layout_marginBottom="5dp"
         android:layout_width="310dp"

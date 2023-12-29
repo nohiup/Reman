@@ -48,9 +48,8 @@ public class Login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        LoginManager.getInstance().logOut();
-        mAuth.signOut();
-        if(currentUser != null) {
+        boolean fbLoggedIn = AccessToken.getCurrentAccessToken() != null;
+        if ((currentUser != null && currentUser.isEmailVerified()) || fbLoggedIn) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
