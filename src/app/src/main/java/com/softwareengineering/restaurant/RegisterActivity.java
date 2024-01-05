@@ -22,13 +22,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText editTextName, editTextEmail, editTextPhone, editTextPassword, editTextRetypePassword;
     RadioGroup radioGroupGender;
@@ -77,7 +76,7 @@ public class Register extends AppCompatActivity {
                 password = String.valueOf(editTextPassword.getText());
                 retypePassword = String.valueOf(editTextRetypePassword.getText());
 
-                if (selectedGenderId == 0) {
+                if (selectedGenderId == 1) {
                     gender = "Male";
                 }
                 else {
@@ -85,42 +84,42 @@ public class Register extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(name)){
-                    Toast.makeText(Register.this, "Enter name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter name", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(email)){
-                    Toast.makeText(Register.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(phone)){
-                    Toast.makeText(Register.this, "Enter phone number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(gender)){
-                    Toast.makeText(Register.this, "Select gender", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Select gender", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)){
-                    Toast.makeText(Register.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(retypePassword)){
-                    Toast.makeText(Register.this, "Re-enter password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Re-enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!TextUtils.equals(password, retypePassword)) {
-                    Toast.makeText(Register.this, "Password doesn't matched", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Password doesn't matched", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!checkBoxTOS.isChecked()) {
-                    Toast.makeText(Register.this, "You must accept our Terms & Conditions in order to proceed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "You must accept our Terms & Conditions in order to proceed", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -132,14 +131,14 @@ public class Register extends AppCompatActivity {
                                     FirebaseUser currentUser = mAuth.getCurrentUser();
                                     if (currentUser != null){
                                         currentUser.sendEmailVerification();
-                                        Toast.makeText(Register.this, "Confirmation link has been sent to your registered email", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "Confirmation link has been sent to your registered email", Toast.LENGTH_SHORT).show();
                                         addUserToDatabase(currentUser.getUid(), name, email, gender, phone);
-                                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
                                 } else {
-                                    Toast.makeText(Register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -150,7 +149,7 @@ public class Register extends AppCompatActivity {
         textViewSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".LoginActivity">
+    tools:context=".AdminLoginActivity">
 
     <ImageView
         android:layout_width="250dp"
@@ -32,13 +32,13 @@
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
-        android:text="@string/email"
+        android:text="@string/username"
         android:textAllCaps="true"
         android:textColor="@color/grey"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/adminUsername"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -63,11 +63,10 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/adminPassword"
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
-            android:textSize="20sp"
             android:background="@drawable/box_bg_design"
             android:importantForAutofill="no"
             android:inputType="textPassword"
@@ -76,7 +75,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/txtForgotPassword"
+        android:id="@+id/adminTxtForgotPassword"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
@@ -87,53 +86,12 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/adminLoginButton"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/orange"
         android:text="@string/login"
         android:textSize="24sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have an account? "
-            android:textColor="@color/grey"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/registerNow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_up_u"
-            android:textColor="@color/orange"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Or sign in as"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/fb_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/blue" />
 
 </LinearLayout>

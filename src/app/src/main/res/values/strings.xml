@@ -8,7 +8,8 @@
     <string name="click_to_login">Click to login</string>
     <string name="click_to_register">Click to register</string>
     <string name="logout">Logout</string>
-    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forget_password">Forgot Password</string>
     <string name="provide_email_reset_pass">Provide your account\'s email for which you want to reset your password</string>
     <string name="reset_password">Reset Password</string>
     <string name="back">Back</string>
@@ -34,4 +35,5 @@
     <string name="facebook_app_id">333416469474965</string>
     <string name="fb_login_protocol_scheme">fb333416469474965</string>
     <string name="facebook_client_token">8a02350a1d3fdbf1bc12520e1bd5cabb</string>
+    <string name="enter">Enter</string>
 </resources>
