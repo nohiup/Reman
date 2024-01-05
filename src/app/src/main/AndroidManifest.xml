@@ -36,9 +36,6 @@
             android:name=".StaffsActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminMainScreen"
-            android:exported="false" />
-        <activity
             android:name=".AdminMainActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />

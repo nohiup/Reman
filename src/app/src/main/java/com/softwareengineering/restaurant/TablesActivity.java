@@ -1,6 +1,7 @@
 package com.softwareengineering.restaurant;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -24,7 +25,7 @@ public class TablesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tables);
+        setContentView(R.layout.activity_staffs);
 
         drawerLayout = findViewById(R.id.adminDrawerLayout);
         topMenuImg = findViewById(R.id.topMenuImg);
@@ -36,6 +37,8 @@ public class TablesActivity extends AppCompatActivity {
         reports = findViewById(R.id.reportsDrawer);
         sales = findViewById(R.id.salesDrawer);
         account = findViewById(R.id.accountDrawer);
+
+        setItemBackgroundColors(tables);
 
         topMenuImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,7 @@ public class TablesActivity extends AppCompatActivity {
         staffs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(staffs);
                 redirectActivity(TablesActivity.this, StaffsActivity.class);
             }
         });
@@ -56,6 +60,7 @@ public class TablesActivity extends AppCompatActivity {
         customers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(customers);
                 redirectActivity(TablesActivity.this, CustomersActivity.class);
             }
         });
@@ -63,6 +68,7 @@ public class TablesActivity extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(menu);
                 redirectActivity(TablesActivity.this, MenuActivity.class);
             }
         });
@@ -70,6 +76,7 @@ public class TablesActivity extends AppCompatActivity {
         tables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(tables);
                 recreate();
             }
         });
@@ -77,6 +84,7 @@ public class TablesActivity extends AppCompatActivity {
         reports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(reports);
                 redirectActivity(TablesActivity.this, ReportsActivity.class);
             }
         });
@@ -84,6 +92,7 @@ public class TablesActivity extends AppCompatActivity {
         sales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(sales);
                 redirectActivity(TablesActivity.this, SalesActivity.class);
             }
         });
@@ -91,10 +100,21 @@ public class TablesActivity extends AppCompatActivity {
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setItemBackgroundColors(account);
                 redirectActivity(TablesActivity.this, AccountActivity.class);
             }
         });
 
+    }
+
+    private void setItemBackgroundColors(RelativeLayout selectedItem) {
+        staffs.setBackgroundColor(selectedItem == staffs ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
+        customers.setBackgroundColor(selectedItem == customers ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
+        menu.setBackgroundColor(selectedItem == menu ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
+        tables.setBackgroundColor(selectedItem == tables ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
+        reports.setBackgroundColor(selectedItem == reports ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
+        sales.setBackgroundColor(selectedItem == sales ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
+        account.setBackgroundColor(selectedItem == account ? ContextCompat.getColor(this, R.color.light_orange) : ContextCompat.getColor(this, R.color.white));
     }
 
     public static void openDrawer (DrawerLayout drawerLayout) {

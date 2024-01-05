@@ -13,10 +13,9 @@
 
         <include layout="@layout/toolbar" />
 
-        <TextView
-            android:text="@string/staffs"
-            android:gravity="center"
-            android:textSize="50sp"
+        <ListView
+            android:id="@+id/staffsListView"
+            android:divider="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

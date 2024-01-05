@@ -9,7 +9,6 @@
         android:id="@+id/staffsDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -17,6 +16,7 @@
             android:id="@+id/staffsImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/staffs" />
 
@@ -39,7 +39,6 @@
         android:id="@+id/customersDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -47,6 +46,7 @@
             android:id="@+id/customersImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/customers" />
 
@@ -69,7 +69,6 @@
         android:id="@+id/menuDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -77,6 +76,7 @@
             android:id="@+id/menuImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/menu" />
 
@@ -99,7 +99,6 @@
         android:id="@+id/tablesDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -107,6 +106,7 @@
             android:id="@+id/tablesImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/tables" />
 
@@ -129,7 +129,6 @@
         android:id="@+id/reportsDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -137,6 +136,7 @@
             android:id="@+id/reportsImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/reports" />
 
@@ -159,7 +159,6 @@
         android:id="@+id/salesDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -167,6 +166,7 @@
             android:id="@+id/salesImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/sales" />
 
@@ -189,7 +189,6 @@
         android:id="@+id/accountDrawer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -197,6 +196,7 @@
             android:id="@+id/accountImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/account" />
 
