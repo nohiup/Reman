@@ -37,14 +37,47 @@ public class AdminMainActivity extends AppCompatActivity {
         binding.adminMainActGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AdminMainActivity.this, "You choose " + position, Toast.LENGTH_SHORT).show();
-                //startItemActivity(id);
+                startItemActivity(position);
             }
         });
 
     }
 
     private void startItemActivity(int position) {
-        Intent intent = new Intent(this, AdminMainActivity.class);
+        Class toStartActivity = null;
+
+        switch (position) {
+            case 0: {
+                toStartActivity = StaffsActivity.class;
+                break;
+            }
+            case 1: {
+                toStartActivity = CustomersActivity.class;
+                break;
+            }
+            case 2: {
+                toStartActivity = MenuActivity.class;
+                break;
+            }
+            case 3: {
+                toStartActivity = TablesActivity.class;
+                break;
+            }
+            case 4: {
+                toStartActivity = ReportsActivity.class;
+                break;
+            }
+            case 5: {
+                toStartActivity = SalesActivity.class;
+                break;
+            }
+            case 6: {
+                toStartActivity = AccountActivity.class;
+                break;
+            }
+        }
+
+        Intent intent = new Intent(AdminMainActivity.this, toStartActivity);
+        startActivity(intent);
     }
 }
