@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -34,19 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button buttonReg;
     FirebaseAuth mAuth;
     TextView textViewSignIn;
-    FirebaseFirestore db;
     CheckBox checkBoxTOS;
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +51,6 @@ public class RegisterActivity extends AppCompatActivity {
         editTextRetypePassword = findViewById(R.id.retypePassword);
         buttonReg = findViewById(R.id.btn_register);
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
         textViewSignIn = findViewById(R.id.loginNow);
         checkBoxTOS = findViewById(R.id.TOS);
 
@@ -73,15 +62,11 @@ public class RegisterActivity extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText());
                 phone = String.valueOf(editTextPhone.getText());
                 int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
+                RadioButton selectedRadioButton = findViewById(selectedGenderId);
                 password = String.valueOf(editTextPassword.getText());
                 retypePassword = String.valueOf(editTextRetypePassword.getText());
 
-                if (selectedGenderId == 1) {
-                    gender = "Male";
-                }
-                else {
-                    gender = "Female";
-                }
+                gender = selectedRadioButton.getText().toString();
 
                 if (TextUtils.isEmpty(name)){
                     Toast.makeText(RegisterActivity.this, "Enter name", Toast.LENGTH_SHORT).show();
@@ -133,9 +118,6 @@ public class RegisterActivity extends AppCompatActivity {
                                         currentUser.sendEmailVerification();
                                         Toast.makeText(RegisterActivity.this, "Confirmation link has been sent to your registered email", Toast.LENGTH_SHORT).show();
                                         addUserToDatabase(currentUser.getUid(), name, email, gender, phone);
-                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                        startActivity(intent);
-                                        finish();
                                     }
                                 } else {
                                     Toast.makeText(RegisterActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
@@ -157,23 +139,22 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void addUserToDatabase(String uid, String name, String email, String gender, String phone) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference userRef = db.collection("users").document(uid);
         Map<String, Object> userData = new HashMap<>();
         userData.put("email", email);
         userData.put("gender", gender);
         userData.put("name", name);
         userData.put("phone", phone);
-        db.collection("users").document(uid).set(userData)
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d("Firestore", "DocumentSnapshot written with ID: " + uid);
-                }
-            })
-                    .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w("Firestore", "Error adding document", e);
-                }
-            });
+        userData.put("role", "customer");
+
+        userRef.set(userData)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("User added to Firestore", "UID: " + uid);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> Log.e("Error adding user to Firestore", "Error ", e));
     }
 }

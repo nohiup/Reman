@@ -43,7 +43,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/box_bg_design"
+        android:background="@drawable/round_corner_box_bg_design"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="10dp" />
@@ -67,8 +67,7 @@
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
-            android:textSize="20sp"
-            android:background="@drawable/box_bg_design"
+            android:background="@drawable/round_corner_box_bg_design"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingHorizontal="10dp" />
@@ -119,21 +118,5 @@
             android:textSize="15sp"
             android:textStyle="bold" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Or sign in as"
-        android:textColor="@color/grey"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/fb_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/blue" />
 
 </LinearLayout>

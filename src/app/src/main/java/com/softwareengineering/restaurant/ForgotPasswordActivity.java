@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
-    Button btnReset, btnBack;
+    Button btnReset;
     EditText editTextEmail;
     FirebaseAuth mAuth;
     String strEmail;
@@ -42,15 +42,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     Toast.makeText(ForgotPasswordActivity.this, "Email field can't be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-            }
-        });
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
 
