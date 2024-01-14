@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +15,7 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".CustomerPackage.DetailFoodActivity"
             android:exported="false" />
         <activity
@@ -23,32 +23,36 @@
             android:exported="false" />
         <activity
             android:name=".StaffPackage.StaffsCustomersActivity"
+=======
+            android:name=".CustomersDetails"
+>>>>>>> origin/main
             android:exported="false" />
         <activity
-            android:name=".StaffPackage.StaffOrderAddActivity"
+            android:name=".EditStaffsActivity"
             android:exported="false" />
         <activity
-            android:name=".StaffPackage.StaffOrderActivity"
+            android:name=".AddStaffsActivity"
             android:exported="false" />
         <activity
-            android:name=".BookTableActivity"
+            android:name=".StaffsDetails"
             android:exported="false" />
         <activity
-            android:name=".StaffPackage.StaffBillActivity"
+            android:name=".AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".StaffPackage.CustomerPaymentActivity"
+            android:name=".SalesActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminPackage.AddFoodActivity"
+            android:name=".ReportsActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerPackage.CustomersAccountEditActivity"
+            android:name=".TablesActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomerPackage.AddReviewActivity"
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
             android:name=".CustomerPackage.CustomersAccountActivity"
             android:exported="false" />
         <activity
@@ -106,6 +110,15 @@
             android:exported="false" />
         <activity
             android:name=".AdminPackage.AdminMainActivity"
+=======
+            android:name=".CustomersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminMainActivity"
+>>>>>>> origin/main
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
@@ -151,15 +164,13 @@
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".CustomerPackage.CustomersMenuActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
-        <activity android:name=".StaffPackage.StaffNewReportActivity" />
-        <activity android:name=".StaffPackage.TableDetailBooked" />
 
         <meta-data
             android:name="preloaded_fonts"

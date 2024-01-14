@@ -4,14 +4,14 @@
     android:id="@+id/adminDrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminPackage.SalesActivity">
+    tools:context=".SalesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar" />
+        <include layout="@layout/admin_toolbar" />
 
         <TextView
             android:text="@string/sales"

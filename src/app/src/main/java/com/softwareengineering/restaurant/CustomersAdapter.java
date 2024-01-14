@@ -1,4 +1,4 @@
-package com.softwareengineering.restaurant.AdminPackage;
+package com.softwareengineering.restaurant;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.softwareengineering.restaurant.ItemClasses.Customers;
-import com.softwareengineering.restaurant.R;
 
 import java.util.ArrayList;
 
@@ -31,8 +28,11 @@ public class CustomersAdapter extends ArrayAdapter<Customers> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.admin_customers_list_item, parent, false);
         }
+
         TextView nameTV = convertView.findViewById(R.id.adminCustomersName);
+
         nameTV.setText(customers.getName());
+
         return convertView;
     }
 }
