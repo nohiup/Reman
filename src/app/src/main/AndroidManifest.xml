@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".StaffPackage.StaffsCustomersActivity"
+            android:exported="false" />
+        <activity
             android:name=".StaffPackage.StaffOrderAddActivity"
             android:exported="false" />
         <activity
@@ -74,9 +77,6 @@
             android:exported="false" />
         <activity
             android:name=".StaffPackage.StaffsPaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StaffPackage.StaffsCustomersActivity"
             android:exported="false" />
         <activity
             android:name=".StaffPackage.StaffsTablesActivity"
@@ -159,7 +159,7 @@
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity android:name=".StaffPackage.StaffNewReportActivity" />
-        <activity android:name="com.softwareengineering.restaurant.StaffPackage.TableDetailBooked" />
+        <activity android:name=".StaffPackage.TableDetailBooked" />
 
         <meta-data
             android:name="preloaded_fonts"
