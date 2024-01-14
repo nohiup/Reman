@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,28 +16,96 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".AccountActivity"
+            android:name=".StaffPackage.StaffOrderAddActivity"
             android:exported="false" />
         <activity
-            android:name=".SalesActivity"
+            android:name=".StaffPackage.StaffOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".ReportsActivity"
+            android:name=".BookTableActivity"
             android:exported="false" />
         <activity
-            android:name=".TablesActivity"
+            android:name=".StaffPackage.StaffBillActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".StaffPackage.CustomerPaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomersActivity"
+            android:name=".AdminPackage.AddFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".StaffsActivity"
+            android:name=".CustomerPackage.CustomersAccountEditActivity"
             android:exported="false" />
         <activity
-            android:name=".AdminMainActivity"
+            android:name=".CustomerPackage.AddReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerPackage.DetailFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerPackage.CustomersAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerPackage.CustomersReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerPackage.CustomersTablesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.ReportsDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.CustomersDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.EditStaffsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.AddStaffsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.StaffsDetails"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsReportsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsCustomersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsTablesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsMenuActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Account" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".AdminPackage.SalesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.ReportsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.TablesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.CustomersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.StaffsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPackage.AdminMainActivity"
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
 
@@ -82,13 +151,15 @@
             android:exported="false"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CustomerPackage.CustomersMenuActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.Material3.Light.NoActionBar" />
+        <activity android:name=".StaffPackage.StaffNewReportActivity" />
+        <activity android:name="com.softwareengineering.restaurant.StaffPackage.TableDetailBooked" />
 
         <meta-data
             android:name="preloaded_fonts"
