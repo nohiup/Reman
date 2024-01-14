@@ -13,28 +13,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.softwareengineering.restaurant.CustomerPackage.CustomersMenuActivity;
+import com.softwareengineering.restaurant.StaffPackage.StaffsMenuActivity;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity {
+public class  LoginActivity extends AppCompatActivity {
 
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
@@ -42,18 +34,16 @@ public class LoginActivity extends AppCompatActivity {
     TextView textView;
     TextView txtForgotPassword;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final CollectionReference usersRef = db.collection("users");
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if ((currentUser != null && currentUser.isEmailVerified())) {
-//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if ((currentUser != null && currentUser.isEmailVerified())) {
+            String uid = currentUser.getUid();
+            getUserRoleFromFirestore(uid);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getUserRoleFromFirestore(String uid) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference userRef = db.collection("users").document(uid);
 
         userRef.get().addOnCompleteListener(task -> {
@@ -145,13 +134,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     // Login as Customer
                     else if (Objects.equals(userRole, "customer")) {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, CustomersMenuActivity.class);
                         startActivity(intent);
                         finish();
                     }
                     // Login as Staff / Employee
                     else {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, StaffsMenuActivity.class);
                         startActivity(intent);
                         finish();
                     }
