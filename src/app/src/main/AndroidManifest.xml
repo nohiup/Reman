@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".CustomerPackage.DetailFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffPackage.StaffsMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".StaffPackage.StaffsCustomersActivity"
             android:exported="false" />
         <activity
@@ -41,9 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".CustomerPackage.AddReviewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CustomerPackage.DetailFoodActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerPackage.CustomersAccountActivity"
@@ -80,9 +83,6 @@
             android:exported="false" />
         <activity
             android:name=".StaffPackage.StaffsTablesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StaffPackage.StaffsMenuActivity"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".Account" -->
         <!-- android:exported="false" /> -->
