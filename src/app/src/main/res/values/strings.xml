@@ -73,6 +73,7 @@
 
     <string name="email_address">Email Address</string>
     <string name="_1">1</string>
+    <string name="cancel">Cancel</string>
     <string name="bill">Bill</string>
     <string name="in_use">In use</string>
     <string name="booked">Booked</string>
